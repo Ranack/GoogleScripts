@@ -2,11 +2,15 @@ var NAME = "Trombi A3 Dev";
 var deck = SlidesApp.create(NAME);
 var slide = deck.appendSlide(SlidesApp.PredefinedLayout.BLANK);
 
-function addImageSlide(link,index) {
-
-  var image = slide.insertImage(link, position, size.width, size.height); 
-  var position = {left: 0, top: 0};
-  var size = {width: 300, height: 100};
+function addImageSlide(link, index) {
+  var padding = 20;
+  var size = { width: 100, height: 200 }
+  var column = index % 4;
+  var line = Math.floor(index / 4);
+  var position = { left: column * (size.width + padding), top: line * (size.height + padding) }
+  Logger.log(position.left);
+  Logger.log(position.top);
+  slide.insertImage(link, position.left, position.top, size.width, size.height);
 }
 
 function myFunction() {
